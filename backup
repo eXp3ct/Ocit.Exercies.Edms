@@ -1,0 +1,150 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 15.4 (Debian 15.4-1.pgdg120+1)
+-- Dumped by pg_dump version 15.3
+
+-- Started on 2023-08-17 15:48:21 UTC
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3397 (class 0 OID 16607)
+-- Dependencies: 219
+-- Data for Name: Addresses; Type: TABLE DATA; Schema: public; Owner: root
+--
+
+INSERT INTO public."Addresses" ("Id", "FullName", "IncomingDocumentId") VALUES (1, 'FIO', NULL);
+INSERT INTO public."Addresses" ("Id", "FullName", "IncomingDocumentId") VALUES (2, 'FIO2', NULL);
+
+
+--
+-- TOC entry 3394 (class 0 OID 16564)
+-- Dependencies: 216
+-- Data for Name: BasicDocuments; Type: TABLE DATA; Schema: public; Owner: root
+--
+
+INSERT INTO public."BasicDocuments" ("Id", "Discriminator", "Name", "DocumentKind", "Subject", "CreatedDate", "DocumentNumber") VALUES (1, 'd27975a9-4b07-4883-b236-f4361245975b', 'Name', '{0}', 'subject', '2023-08-17 12:40:22.559542+00', 'Number1');
+INSERT INTO public."BasicDocuments" ("Id", "Discriminator", "Name", "DocumentKind", "Subject", "CreatedDate", "DocumentNumber") VALUES (2, 'e4321c60-166c-4479-9eb7-b71768832fb3', 'Name2', '{0}', 'subject2', '2023-08-17 12:40:22.559543+00', 'Number2');
+INSERT INTO public."BasicDocuments" ("Id", "Discriminator", "Name", "DocumentKind", "Subject", "CreatedDate", "DocumentNumber") VALUES (4, 'd27975a9-4b07-4883-b236-f4361245975b', 'incomingName1', '{1}', 'incomingSubject1', '2023-08-17 12:40:22.559549+00', 'docNumber1');
+INSERT INTO public."BasicDocuments" ("Id", "Discriminator", "Name", "DocumentKind", "Subject", "CreatedDate", "DocumentNumber") VALUES (5, 'e4321c60-166c-4479-9eb7-b71768832fb3', 'incomingName2', '{1}', 'incomingSubject2', '2023-08-17 12:40:22.55955+00', 'docNumber2');
+INSERT INTO public."BasicDocuments" ("Id", "Discriminator", "Name", "DocumentKind", "Subject", "CreatedDate", "DocumentNumber") VALUES (6, 'd27975a9-4b07-4883-b236-f4361245975b', 'incomingName3', '{1}', 'incomingSubject3', '2023-08-17 12:40:22.559551+00', 'docNumber3');
+INSERT INTO public."BasicDocuments" ("Id", "Discriminator", "Name", "DocumentKind", "Subject", "CreatedDate", "DocumentNumber") VALUES (3, 'd27975a9-4b07-4883-b236-f4361245975b', 'Name3', '{0}', 'subject3', '2023-08-17 12:40:22.559544+00', 'Number3');
+
+
+--
+-- TOC entry 3399 (class 0 OID 16620)
+-- Dependencies: 221
+-- Data for Name: CameFroms; Type: TABLE DATA; Schema: public; Owner: root
+--
+
+INSERT INTO public."CameFroms" ("Id", "Name", "IncomingDocumentId") VALUES (1, 'cameFrom1', NULL);
+INSERT INTO public."CameFroms" ("Id", "Name", "IncomingDocumentId") VALUES (2, 'cameFrom2', NULL);
+INSERT INTO public."CameFroms" ("Id", "Name", "IncomingDocumentId") VALUES (3, 'cameFrom3', NULL);
+
+
+--
+-- TOC entry 3401 (class 0 OID 16633)
+-- Dependencies: 223
+-- Data for Name: CounterParties; Type: TABLE DATA; Schema: public; Owner: root
+--
+
+INSERT INTO public."CounterParties" ("Id", "Name", "IncomingDocumentId") VALUES (1, 'party1', NULL);
+INSERT INTO public."CounterParties" ("Id", "Name", "IncomingDocumentId") VALUES (2, 'party2', NULL);
+INSERT INTO public."CounterParties" ("Id", "Name", "IncomingDocumentId") VALUES (3, 'party3', NULL);
+
+
+--
+-- TOC entry 3403 (class 0 OID 16646)
+-- Dependencies: 225
+-- Data for Name: DeliveryMethods; Type: TABLE DATA; Schema: public; Owner: root
+--
+
+INSERT INTO public."DeliveryMethods" ("Id", "Name", "IncomingDocumentId") VALUES (1, 'EMAIL', NULL);
+INSERT INTO public."DeliveryMethods" ("Id", "Name", "IncomingDocumentId") VALUES (2, 'EDMS', NULL);
+INSERT INTO public."DeliveryMethods" ("Id", "Name", "IncomingDocumentId") VALUES (3, 'MAIL', NULL);
+
+
+--
+-- TOC entry 3395 (class 0 OID 16579)
+-- Dependencies: 217
+-- Data for Name: IncomingDocuments; Type: TABLE DATA; Schema: public; Owner: root
+--
+
+INSERT INTO public."IncomingDocuments" ("Id", "AddresseIds", "CounterPartyIds", "DeliveryMethodIds", "CameFromIds") VALUES (4, '{1}', '{1}', '{1}', '{1}');
+INSERT INTO public."IncomingDocuments" ("Id", "AddresseIds", "CounterPartyIds", "DeliveryMethodIds", "CameFromIds") VALUES (5, '{2}', '{1,1}', '{1,2}', '{2,1}');
+INSERT INTO public."IncomingDocuments" ("Id", "AddresseIds", "CounterPartyIds", "DeliveryMethodIds", "CameFromIds") VALUES (6, '{2}', '{1,3}', '{3}', '{3,2}');
+
+
+--
+-- TOC entry 3392 (class 0 OID 16558)
+-- Dependencies: 214
+-- Data for Name: __EFMigrationsHistory; Type: TABLE DATA; Schema: public; Owner: root
+--
+
+INSERT INTO public."__EFMigrationsHistory" ("MigrationId", "ProductVersion") VALUES ('20230817114047_Initial', '7.0.10');
+INSERT INTO public."__EFMigrationsHistory" ("MigrationId", "ProductVersion") VALUES ('20230817120708_EntityDocumentChanged', '7.0.10');
+INSERT INTO public."__EFMigrationsHistory" ("MigrationId", "ProductVersion") VALUES ('20230817124022_AddedNewDbSets', '7.0.10');
+
+
+--
+-- TOC entry 3410 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: Addresse_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+--
+
+SELECT pg_catalog.setval('public."Addresse_Id_seq"', 3, false);
+
+
+--
+-- TOC entry 3411 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: BasicDocuments_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+--
+
+SELECT pg_catalog.setval('public."BasicDocuments_Id_seq"', 7, false);
+
+
+--
+-- TOC entry 3412 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: CameFrom_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+--
+
+SELECT pg_catalog.setval('public."CameFrom_Id_seq"', 4, false);
+
+
+--
+-- TOC entry 3413 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: CounterParty_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+--
+
+SELECT pg_catalog.setval('public."CounterParty_Id_seq"', 4, false);
+
+
+--
+-- TOC entry 3414 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: DeliveryMethod_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+--
+
+SELECT pg_catalog.setval('public."DeliveryMethod_Id_seq"', 4, false);
+
+
+-- Completed on 2023-08-17 15:48:22 UTC
+
+--
+-- PostgreSQL database dump complete
+--
+
